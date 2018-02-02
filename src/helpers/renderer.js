@@ -9,7 +9,7 @@ export default (req, store) => {
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         <Routes />
-      </StaticRouter>,
+      </StaticRouter>
     </Provider>,
   );
 
