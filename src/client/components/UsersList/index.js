@@ -7,8 +7,9 @@ class UsersList extends Component {
     this.props.fetchUsers();
   }
 
-  renderUsers = () =>
-    this.props.users(user => <li key={user.id}>{user.name}</li>);
+  renderUsers() {
+    return this.props.users.map(({ id, name }) => <li key={id}>{name}</li>);
+  }
 
   render() {
     return (
