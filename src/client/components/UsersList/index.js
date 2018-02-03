@@ -25,4 +25,9 @@ function mapStateToProps({ users }) {
   return { users };
 }
 
+function loadData() {
+  console.log('Trying to load some data in UserList component');
+}
+
+export { loadData };
 export default connect(mapStateToProps, { fetchUsers })(UsersList);
