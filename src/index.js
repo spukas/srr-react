@@ -11,8 +11,9 @@ app.use(express.static('public'));
 app.get('*', (req, res) => {
   const store = createStore();
 
-  matchRoutes(Routes, req.path).map(
-    ({ route }) => route.loadData && route.loadData(),
+  // returns an array of promises from api requests
+  const promises = matchRoutes(Routes, req.path).map(
+    ({ route }) => route.loadData && route.loadData(store),
   );
 
   res.send(renderer(req, store));
