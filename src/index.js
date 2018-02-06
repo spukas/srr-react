@@ -8,15 +8,18 @@ import { renderer, createStore } from './helpers';
 
 const app = express();
 
-app.use('/api', proxy('http://ssr-react-api.herokuapp.com'), {
-  proxyReqOptDecorator(opts) {
-    opts.header['x-forwarded-host'] = 'localhost:3000';
-    return opts;
-  },
-});
+app.use(
+  '/api',
+  proxy('http://react-ssr-api.herokuapp.com', {
+    proxyReqOptDecorator(opts) {
+      opts.headers['x-forwarded-host'] = 'localhost:3000';
+      return opts;
+    },
+  }),
+);
 app.use(express.static('public'));
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
 
   // returns an array of promises from api requests
   const promises = matchRoutes(Routes, req.path).map(
