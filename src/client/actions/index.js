@@ -1,6 +1,6 @@
-import { FETCH_USERS } from './types';
+import { FETCH_USERS, FETCH_CURRENT_USER } from './types';
 
-export const fetchUsers = () => async (dispatch, getState, api) => {
+const fetchUsers = () => async (dispatch, getState, api) => {
   const res = await api.get('/users');
 
   return dispatch({
@@ -8,3 +8,14 @@ export const fetchUsers = () => async (dispatch, getState, api) => {
     payload: res,
   });
 };
+
+const fetchCurrentUser = () => async (dispatch, getState, api) => {
+  const res = await api.get('/current_user');
+
+  return dispatch({
+    type: FETCH_CURRENT_USER,
+    payload: res,
+  });
+};
+
+export { fetchUsers, fetchCurrentUser };
