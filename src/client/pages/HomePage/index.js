@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Home = () => (
-  <div>
-    <div>Home Page</div>
-    <button onClick={() => console.log('click')}>Click me</button>
+  <div className="center-align" style={{ marginTop: '100px' }}>
+    <h3>Welcome to React SSR</h3>
+    <p>Login and select users from the navbar</p>
   </div>
 );
 
