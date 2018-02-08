@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_CURRENT_USER } from './types';
+import { FETCH_USERS, FETCH_CURRENT_USER, FETCH_ADMINS } from './types';
 
 const fetchUsers = () => async (dispatch, getState, api) => {
   const res = await api.get('/users');
@@ -18,4 +18,13 @@ const fetchCurrentUser = () => async (dispatch, getState, api) => {
   });
 };
 
-export { fetchUsers, fetchCurrentUser };
+const fetchAdmins = () => async (dispatch, getState, api) => {
+  const res = await api.get('/admins');
+
+  return dispatch({
+    type: FETCH_ADMINS,
+    payload: res,
+  });
+};
+
+export { fetchUsers, fetchCurrentUser, fetchAdmins };
