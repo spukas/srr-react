@@ -1,8 +1,9 @@
 import React from 'react';
 import HomePage from './pages/HomePage';
-import UsersListPage, { loadData } from './pages/UsersListPage';
-import App from './components/App';
+import UsersListPage from './pages/UsersListPage';
+import AdminsListPage from './pages/AdminsListPage';
 import PageNotFound from './pages/PageNotFound';
+import App from './components/App';
 
 export default [
   {
@@ -16,6 +17,10 @@ export default [
       {
         ...UsersListPage,
         path: '/users',
+      },
+      {
+        ...AdminsListPage,
+        path: '/admins',
       },
       {
         ...PageNotFound,
