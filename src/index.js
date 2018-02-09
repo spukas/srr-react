@@ -22,9 +22,13 @@ app.get('*', (req, res) => {
   const store = createStore(req);
 
   // returns an array of promises from api requests
-  const promises = matchRoutes(Routes, req.path).map(
-    ({ route }) => route.loadData && route.loadData(store),
-  );
+  const promises = matchRoutes(Routes, req.path)
+    .map(({ route }) => route.loadData && route.loadData(store))
+    .map(
+      promise =>
+        promise &&
+        new Promise((resolve, reject) => promise.then(resolve).catch(resolve)),
+    );
 
   Promise.all(promises).then(() => {
     const context = {};
