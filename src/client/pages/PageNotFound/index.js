@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PageNotFound = ({ staticContext = {} }) => {
-  staticContext.noFound = true;
+  staticContext.notFound = true;
 
   return (
     <div className="center-align" style={{ marginTop: '100px' }}>
